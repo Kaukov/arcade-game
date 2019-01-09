@@ -9,6 +9,7 @@ class Engine {
     this.context = this.canvas.getContext('2d')
 
     this.lastTime;
+    this.resources;
   }
 
   setCanvas (width, height) {
@@ -17,6 +18,8 @@ class Engine {
 
     this.doc.body.appendChild(this.canvas)
   }
+
+  setResources (resourceClass) { this.resources = resourceClass }
 
   main () {
     const now = Date.now()
