@@ -8,8 +8,6 @@ export const WATER_BLOCK = './img/water-block.png'
 export const STONE_BLOCK = './img/stone-block.png'
 export const GRASS_BLOCK = './img/grass-block.png'
 
-export const ENEMY_SPRITE = './img/enemy-bug.png'
-
 export const PLAYER_SPRITE_NAMES = [
   'char-boy',
   'char-cat-girl',
@@ -17,6 +15,9 @@ export const PLAYER_SPRITE_NAMES = [
   'char-pink-girl',
   'char-princess-girl'
 ]
+
+export const ENEMY_SPRITE = './img/enemy-bug.png'
+export const PLAYER_SPRITE = `./img/${PLAYER_SPRITE_NAMES[Math.floor(Math.random() * (PLAYER_SPRITE_NAMES.length - 1))]}.png`
 
 export const PLAYER_INITIAL_X = 200
 export const PLAYER_INITIAL_Y = 380
