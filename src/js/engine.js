@@ -60,9 +60,9 @@ class Engine {
   }
 
   run () {
-    // if (!this.resources || !this.player || !this.enemies) {
-    //   throw new Error(`Resources, player or entities not defined!`)
-    // }
+    if (!this.resources || !this.player || !this.enemies) {
+      throw new Error(`Resources, player or entities not defined!`)
+    }
 
     this.lastTime = Date.now()
 
@@ -71,19 +71,19 @@ class Engine {
 
   updateEntities (dt) {
     // Update enemies and the player (calling their update method)
-    // this.enemies.forEach(enemy => enemy.update(dt))
+    this.enemies.forEach(enemy => enemy.update(dt))
     this.player.update(dt)
 
-    // this.checkForCollision()
+    this.checkForCollision()
   }
 
   checkForCollision () {
     this.enemies.forEach(enemy => {
       if (
-        this.player.x < enemy.x * ENEMY_WIDTH / 2 &&
-        this.player.x * ENEMY_WIDTH / 2 > enemy.x &&
-        this.player.y < enemy.y * ENEMY_HEIGHT / 4 &&
-        this.player.y * ENEMY_HEIGHT / 4 > enemy.y
+        this.player.x < enemy.x * enemy.width / 2 &&
+        this.player.x * enemy.width / 2 > enemy.x &&
+        this.player.y < enemy.y * enemy.height / 4 &&
+        this.player.y * enemy.height / 4 > enemy.y
       ) {
         this.player.x = PLAYER_INITIAL_X
         this.player.y = PLAYER_INITIAL_Y
@@ -121,14 +121,14 @@ class Engine {
 
   renderEntities () {
     // Render all enemies and the player
-    // this.enemies.forEach(enemy => {
-    //   const enemySprite = new Image()
-    //   enemySprite.src = ENEMY_SPRITE
+    this.enemies.forEach(enemy => {
+      const enemySprite = new Image()
+      enemySprite.src = ENEMY_SPRITE
 
-    //   enemy.setSprite(enemySprite)
+      enemy.setSprite(enemySprite)
 
-    //   enemy.render(this.context)
-    // })
+      enemy.render(this.context)
+    })
 
     const playerSprite = new Image()
     playerSprite.src = PLAYER_SPRITE
