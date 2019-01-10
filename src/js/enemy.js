@@ -7,6 +7,12 @@ class Enemy extends Entity {
   }
 
   update () {
-    //
+    if (this.x > 550) {
+      this.x = -100
+    }
+  }
+
+  move (dt) {
+    this.x += this.velocity * dt;
   }
 }

@@ -73,8 +73,13 @@ class Engine {
 
   updateEntities (dt) {
     // Update enemies and the player (calling their update method)
-    this.enemies.forEach(enemy => enemy.update(dt))
-    this.player.update(dt)
+    this.enemies.forEach(enemy => {
+      enemy.move(dt)
+
+      enemy.update()
+    })
+
+    this.player.update()
 
     this.checkForCollision()
   }
@@ -82,10 +87,10 @@ class Engine {
   checkForCollision () {
     this.enemies.forEach(enemy => {
       if (
-        this.player.x < enemy.x * enemy.width / 2 &&
-        this.player.x * enemy.width / 2 > enemy.x &&
-        this.player.y < enemy.y * enemy.height / 4 &&
-        this.player.y * enemy.height / 4 > enemy.y
+        this.player.x < enemy.x + enemy.width / 2 &&
+        this.player.x + enemy.width / 2 > enemy.x &&
+        this.player.y < enemy.y + enemy.height / 4 &&
+        this.player.y + enemy.height / 4 > enemy.y
       ) {
         this.player.x = PLAYER_INITIAL_X
         this.player.y = PLAYER_INITIAL_Y

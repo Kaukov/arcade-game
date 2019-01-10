@@ -10,7 +10,7 @@ const resources = new Resources()
 const player = new Player(200, 380, 50)
 
 ENEMY_ROWS.forEach(startingRow => {
-  const enemy = new Enemy(getRandomEnemyStartingPos(), startingRow, 60)
+  const enemy = new Enemy(getRandomEnemyStartingPos(), startingRow, 60, ENEMY_WIDTH, ENEMY_HEIGHT)
 
   enemies.push(enemy)
 })
