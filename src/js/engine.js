@@ -106,9 +106,9 @@ class Engine {
 
     for (let i = 0; i < ROWS; i++) {
       for (let j = 0; j < COLS; j++) {
-        if (i === 0 || i === 1) {
+        if (i === ROWS - 1 || i === ROWS - 2) {
           this.context.drawImage(grassImg, j * 101, i * 83)
-        } else if (i === ROWS - 1) {
+        } else if (i === 0) {
           this.context.drawImage(waterImg, j * 101, i * 83)
         } else {
           this.context.drawImage(stoneImg, j * 101, i * 83)
