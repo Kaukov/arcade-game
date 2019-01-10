@@ -66,6 +66,8 @@ class Engine {
 
     this.lastTime = Date.now()
 
+    this.doc.addEventListener('keyup', this.movePlayer.bind(this))
+
     this.main()
   }
 
@@ -135,5 +137,16 @@ class Engine {
 
     this.player.setSprite(playerSprite)
     this.player.render(this.context)
+  }
+
+  movePlayer (event) {
+    const keys = {
+      37: 'left',
+      38: 'up',
+      39: 'right',
+      40: 'down'
+    }
+
+    return this.player.move(keys[event.keyCode])
   }
 }
