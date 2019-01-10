@@ -3,13 +3,18 @@ class Entity {
     this.x = x
     this.y = y
     this.velocity = velocity
+    this.sprite = null
   }
 
   update () {
     //
   }
 
-  render () {
-    //
+  render (context) {
+    context.drawImage(this.sprite, this.x, this.y)
+  }
+
+  setSprite (sprite) {
+    this.sprite = sprite
   }
 }

@@ -4,12 +4,12 @@ const CANVAS_HEIGHT = 606
 const ROWS = 6
 const COLS = 5
 
-const WATER_BLOCK = '../img/water-block.png'
-const STONE_BLOCK = '../img/stone-block.png'
-const GRASS_BLOCK = '../img/grass-block.png'
+const WATER_BLOCK = './img/water-block.png'
+const STONE_BLOCK = './img/stone-block.png'
+const GRASS_BLOCK = './img/grass-block.png'
 
-const ENEMY_SPRITE = '../img/enemy-bug.png'
-const PLAYER_SPRITE = '../img/char-boy.png'
+const ENEMY_SPRITE = './img/enemy-bug.png'
+const PLAYER_SPRITE = './img/char-boy.png'
 
 const PLAYER_INITIAL_X = 200
 const PLAYER_INITIAL_Y = 380
@@ -51,7 +51,7 @@ class Engine {
 
     this.lastTime = now
 
-    this.win.requestAnimationFrame(main)
+    this.win.requestAnimationFrame(this.main.bind(this))
   }
 
   update (dt) {
@@ -60,9 +60,9 @@ class Engine {
   }
 
   run () {
-    if (!this.resources || !this.player || !this.enemies) {
-      throw new Error(`Resources, player or entities not defined!`)
-    }
+    // if (!this.resources || !this.player || !this.enemies) {
+    //   throw new Error(`Resources, player or entities not defined!`)
+    // }
 
     this.lastTime = Date.now()
 
@@ -71,10 +71,10 @@ class Engine {
 
   updateEntities (dt) {
     // Update enemies and the player (calling their update method)
-    this.enemies.forEach(enemy => enemy.update(dt))
+    // this.enemies.forEach(enemy => enemy.update(dt))
     this.player.update(dt)
 
-    this.checkForCollision()
+    // this.checkForCollision()
   }
 
   checkForCollision () {
@@ -92,17 +92,26 @@ class Engine {
   }
 
   render () {
+    const grassImg = new Image()
+    grassImg.src = GRASS_BLOCK
+
+    const waterImg = new Image()
+    waterImg.src = WATER_BLOCK
+
+    const stoneImg = new Image()
+    stoneImg.src = STONE_BLOCK
+
     // Clear the canvas
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
     for (let i = 0; i < ROWS; i++) {
       for (let j = 0; j < COLS; j++) {
         if (i === 0 || i === 1) {
-          this.context.drawImage(GRASS_BLOCK, j * 101, i * 83)
+          this.context.drawImage(grassImg, j * 101, i * 83)
         } else if (i === ROWS - 1) {
-          this.context.drawImage(WATER_BLOCK, j * 101, i * 83)
+          this.context.drawImage(waterImg, j * 101, i * 83)
         } else {
-          this.context.drawImage(STONE_BLOCK, j * 101, i * 83)
+          this.context.drawImage(stoneImg, j * 101, i * 83)
         }
       }
     }
@@ -112,7 +121,19 @@ class Engine {
 
   renderEntities () {
     // Render all enemies and the player
-    this.enemies.forEach(enemy => enemy.render(ENEMY_SPRITE))
-    this.player.render(PLAYER_SPRITE)
+    // this.enemies.forEach(enemy => {
+    //   const enemySprite = new Image()
+    //   enemySprite.src = ENEMY_SPRITE
+
+    //   enemy.setSprite(enemySprite)
+
+    //   enemy.render(this.context)
+    // })
+
+    const playerSprite = new Image()
+    playerSprite.src = PLAYER_SPRITE
+
+    this.player.setSprite(playerSprite)
+    this.player.render(this.context)
   }
 }
