@@ -66,7 +66,7 @@ class Engine {
 
     this.lastTime = Date.now()
 
-    this.doc.addEventListener('keyup', this.movePlayer.bind(this))
+    this.doc.addEventListener('keydown', this.movePlayer.bind(this))
 
     this.main()
   }
