@@ -1,20 +1,18 @@
-const CANVAS_WIDTH = 505
-const CANVAS_HEIGHT = 606
+import {
+  PLAYER_INITIAL_X,
+  PLAYER_INITIAL_Y,
+  PLAYER_SPRITE,
+  ENEMY_SPRITE,
+  WATER_BLOCK,
+  GRASS_BLOCK,
+  STONE_BLOCK,
+  CANVAS_WIDTH,
+  CANVAS_HEIGHT,
+  ROWS,
+  COLS
+} from './constants'
 
-const ROWS = 6
-const COLS = 5
-
-const WATER_BLOCK = './img/water-block.png'
-const STONE_BLOCK = './img/stone-block.png'
-const GRASS_BLOCK = './img/grass-block.png'
-
-const ENEMY_SPRITE = './img/enemy-bug.png'
-const PLAYER_SPRITE = './img/char-boy.png'
-
-const PLAYER_INITIAL_X = 200
-const PLAYER_INITIAL_Y = 380
-
-class Engine {
+export default class Engine {
   constructor (browser) {
     this.doc = browser.document
     this.win = browser.window

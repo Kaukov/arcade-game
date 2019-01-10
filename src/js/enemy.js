@@ -1,4 +1,6 @@
-class Enemy extends Entity {
+import Entity from './entity'
+
+export default class Enemy extends Entity {
   constructor (x, y, velocity, width, height) {
     super(x, y, velocity)
 

@@ -1,4 +1,4 @@
-class Entity {
+export default class Entity {
   constructor (x, y, velocity) {
     this.x = x
     this.y = y

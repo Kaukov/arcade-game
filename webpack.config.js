@@ -1,6 +1,6 @@
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const HTMLWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -11,13 +11,30 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new HTMLWebpackPlugin({
-      title: 'Arcade Game',
-      template: './src/index.html'
-    })
+    new CopyWebpackPlugin([
+      {
+        from: './src/img/**',
+        to: path.resolve(__dirname, 'dist/img'),
+        flatten: true
+      },
+      {
+        from: './src/index.html',
+        to: path.resolve(__dirname, 'dist')
+      }
+    ])
   ],
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [ '@babel/preset-env' ]
+          }
+        }
+      },
       {
         test: /\.css$/,
         use: [

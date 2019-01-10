@@ -1,4 +1,7 @@
-class Player extends Entity {
+import Entity from './entity'
+import { PLAYER_INITIAL_X, PLAYER_INITIAL_Y } from './constants'
+
+export default class Player extends Entity {
   update () {
     if (this.x > 400) {
       this.x = 400

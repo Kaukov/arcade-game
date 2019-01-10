@@ -1,12 +1,17 @@
-const ENEMY_ROWS = [60, 140, 220]
-const ENEMY_WIDTH = 101
-const ENEMY_HEIGHT = 171
+import Engine from './engine'
+import Player from './player'
+import Enemy from './enemy'
+import Resources from './resources'
+import {
+  ENEMY_WIDTH,
+  ENEMY_HEIGHT,
+  ENEMY_ROWS
+} from './constants'
 
 const enemies = []
 
-const game = new Engine(this) // `this` refers to the browser window
+const game = new Engine(window)
 const resources = new Resources()
-
 const player = new Player(200, 380, 50)
 
 ENEMY_ROWS.forEach(startingRow => {

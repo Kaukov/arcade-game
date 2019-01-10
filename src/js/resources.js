@@ -1,4 +1,4 @@
-class Resources {
+export default class Resources {
   constructor () {
     //
   }
