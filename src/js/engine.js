@@ -8,6 +8,9 @@ const WATER_BLOCK = '../img/water-block.png'
 const STONE_BLOCK = '../img/stone-block.png'
 const GRASS_BLOCK = '../img/grass-block.png'
 
+const ENEMY_SPRITE = '../img/enemy-bug.png'
+const PLAYER_SPRITE = '../img/char-boy.png'
+
 class Engine {
   constructor (browser) {
     this.doc = browser.document
@@ -90,7 +93,7 @@ class Engine {
 
   renderEntities () {
     // Render all enemies and the player
-    this.enemies.forEach(enemy => enemy.render())
-    this.player.render()
+    this.enemies.forEach(enemy => enemy.render(ENEMY_SPRITE))
+    this.player.render(PLAYER_SPRITE)
   }
 }
