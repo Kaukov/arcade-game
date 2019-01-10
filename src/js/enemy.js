@@ -1,4 +1,5 @@
 import Entity from './entity'
+import { getRandomEnemyVelocity } from './utils'
 
 export default class Enemy extends Entity {
   constructor (x, y, velocity, width, height) {
@@ -11,6 +12,8 @@ export default class Enemy extends Entity {
   update () {
     if (this.x > 550) {
       this.x = -100
+
+      this.velocity = getRandomEnemyVelocity()
     }
   }
 
