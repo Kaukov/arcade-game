@@ -11,6 +11,9 @@ const GRASS_BLOCK = '../img/grass-block.png'
 const ENEMY_SPRITE = '../img/enemy-bug.png'
 const PLAYER_SPRITE = '../img/char-boy.png'
 
+const PLAYER_INITIAL_X = 200
+const PLAYER_INITIAL_Y = 380
+
 class Engine {
   constructor (browser) {
     this.doc = browser.document
@@ -70,6 +73,22 @@ class Engine {
     // Update enemies and the player (calling their update method)
     this.enemies.forEach(enemy => enemy.update(dt))
     this.player.update(dt)
+
+    this.checkForCollision()
+  }
+
+  checkForCollision () {
+    this.enemies.forEach(enemy => {
+      if (
+        this.player.x < enemy.x * ENEMY_WIDTH / 2 &&
+        this.player.x * ENEMY_WIDTH / 2 > enemy.x &&
+        this.player.y < enemy.y * ENEMY_HEIGHT / 4 &&
+        this.player.y * ENEMY_HEIGHT / 4 > enemy.y
+      ) {
+        this.player.x = PLAYER_INITIAL_X
+        this.player.y = PLAYER_INITIAL_Y
+      }
+    })
   }
 
   render () {
