@@ -1,5 +1,6 @@
 import Entity from './entity'
 import { getRandomEnemyVelocity } from './utils'
+import { CANVAS_WIDTH, ENEMY_CANVAS_OFFSET } from './constants'
 
 export default class Enemy extends Entity {
   constructor (x, y, velocity, width, height) {
@@ -10,7 +11,7 @@ export default class Enemy extends Entity {
   }
 
   update () {
-    if (this.x > 550) {
+    if (this.x > CANVAS_WIDTH + ENEMY_CANVAS_OFFSET) {
       this.x = -100
 
       this.velocity = getRandomEnemyVelocity()
