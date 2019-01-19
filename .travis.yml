@@ -14,9 +14,11 @@ cache:
 
 install:
   # - npm install -g yarn
+  - npm install -g codecov
 
 script:
   # - yarn build --base-href https://kaukov.github.io/arcade-game/
+  - codecov
   - npm run build
 
 deploy:
